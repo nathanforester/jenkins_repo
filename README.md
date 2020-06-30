@@ -1,4 +1,4 @@
-# Vagrant provision class :taco:
+get out the way # Vagrant provision class :taco:
 
 Today's learning objectives:
 - provisioning 
