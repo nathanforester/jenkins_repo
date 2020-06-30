@@ -38,4 +38,4 @@ Well I know the enviroment will be:
 - I will need my app in my vm! (right?) so I can install and run it's code 
 
 
-
+Good morning
