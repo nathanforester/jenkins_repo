@@ -1,41 +1,90 @@
-get out the way get out the way# Vagrant provision class :taco:
+# Repo Fully Automated
 
-Today's learning objectives:
-- provisioning 
-- setting up a working app
+### Jenkins Interface
 
+- A pipeline has been created through Jenkins and associated web hooks to this repo
+- Once any changes to the code are made, it is committed and pushed to the development branch
+- Jenkins reads the code and this triggers a new build
+- Once the vm is successfully built, a trigger is set on Jenkins for the changes to the development branch to be merged with the master branch
+- The integrated machine can now be tested for use
 
+# Using your virtual machine
 
-### Sudo code of what we want to do: 
+### Creating the vm
 
-#### Question you might ask
-Someone from the team is hadding you code. Don't just accpet, ask for context. Examples:
-- what language
-- what frameworks?
-- are there tests? 
-- is a specific package that need to be installed? is the a package list of some sort? 
-- specific versions?
-- specific packages or versions that don't work? 
-- any other info? 
+- in bash/gitbash type the following cmd:
 
-##### response you got today!
-- amazing <person> thank you for asking! Well we have a good readme.
-- it's all built on js node (ohhh okay look out for this terminology)
-- and there are some test you can run from the host machine. 
-- just bundle install and run the rake file! (smile)
+````
+   vagrant up
 
-I want to create machine and set up a work app in it. 
-I want it in a VM because it will be a standardize environment.
+ ````
 
-What steps do I need to take?
+ - Wait for the machine to be created. If there are any errors, vagrantfile or provisioning scripts need debugging
 
-Well I know the enviroment will be: 
-- ubuntu/xenial64 (done)
-- I will need nodejs 
-- check how to install stuff in it (the dependencies)
-- I want it on port 80
-- I will need a reverse proxy to get my app talking on port 80 
-- I will need my app in my vm! (right?) so I can install and run it's code 
+ - start and access the virtual machine with the following command:
 
+ ````
+ 	vagrant ssh app
 
-Good morning
+ ````
+
+ - Once inside the machine, enter the following command:
+
+ ````
+
+ 	cd ..
+
+ ````
+
+ - this will take you to the home directory where you need to access the app directory:
+
+ ````
+ 	cd ubuntu/app
+
+ ````
+
+ - check that npm  is installed with the following command:
+
+ ````
+ 	npm --version
+
+ ````
+
+ - the version number should load on a separate line (e.g. 3.10.10)
+
+- start npm by using the following command:
+
+````
+	npm start
+
+````
+
+- Once you get a message "listening on port 3000", you can now test the functionality on a web browser by entering the following in the URL bar:
+
+````
+	development.local:3000
+
+````
+
+- you can now test if the database has been seeded:
+
+````
+	development.local:3000/posts
+
+````
+
+Errors should be logged and escalated for immediate resolution 
+
+````
+	cd ..
+	cd home/ubuntu/app/seeds
+
+	node seed.js
+
+	cd ..
+
+	npm start
+
+````
+- The above script is just in case the database was not seeded manually
+
